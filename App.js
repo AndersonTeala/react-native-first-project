@@ -1,43 +1,32 @@
 import React, { Component } from 'react';
-import {View, Text, Image} from 'react-native'
+import {View, Text, StyleSheet } from 'react-native'
 
 class App extends Component{
-  render(){
-
-    let nome = 'Retr0';
-
+render(){
     return(
-      <View>
-        <Text>Hello World!</Text>
-        <Text>Meu Primeiro App</Text>
-        <Text style= {{ color: '#ff5555', fontSize: 25, margin: 15 }}>
-          Anderson Teala
-          </Text>
+        <View style={styles.area} >
 
-      <Text style={{ fontSize: 30 }}> {nome} </Text>
+          <Text style={[ styles.textoPrincipal, styles.alinhaTexto ]} >Eu sou o texto 1</Text>
+          <Text style={styles.alinhaTexto} >Eu sou o texto 2</Text>
+          <Text>Eu sou o texto 3</Text>
+          <Text style={styles.textoPrincipal} >Eu sou o texto 4</Text>
 
-      <Anderson Largura={100} altura={100} fulano="Teala" />
-
-      </View>
-    );
+        </View>
+      );
+    }
   }
-}
+
+  const styles = StyleSheet.create({
+    area:{
+      marginTop: 40
+    },
+    textoPrincipal:{
+      fontSize: 25,
+      color: '#ff5555'
+    },
+    alinhaTexto:{
+      textAlign: 'center'
+    }
+  });
 
 export default App;
-
-class Anderson extends Component{
-  render(){
-
-    let img = 'https://blogatnteala.sentidoconsultoria.com.br/wp-content/uploads/2020/10/image.jpeg';
-
-    return(
-      <View>
-      <Image 
-        source={{ uri: img }}
-        style={{ width: this.props.Largura, height: this.props.altura }} 
-        />
-        <Text> {this.props.fulano} </Text>
-      </View>
-    );
-  }
-}
