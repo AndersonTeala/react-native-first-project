@@ -4,13 +4,19 @@ import {View, Text } from 'react-native'
 class App extends Component{
 render(){
     return(
-        <View style={{flex:1, backgroundColor: '#282a36'}}>
+        <View style={{flex:1, 
+                      backgroundColor: '#282a36', 
+                      flexDirection: 'row', 
+                      alignItems: 'center', 
+                      justifyContent: 'center' 
+                      }}>
 
-            <View style={{flex:1, backgroundColor: 'red'}}>
-              <Text>Meu primeiro texto aqui</Text>
-            </View>
-            <View style={{flex:1, backgroundColor: 'green'}}></View>
-            <View style={{flex:2, backgroundColor: 'yellow'}}></View>
+            <View style={{width:50, height: 50, backgroundColor: '#f1fa8c'}}></View>
+
+            <View style={{width:50, height: 50, backgroundColor: '#50fa7b'}}></View>
+
+            <View style={{width: 50, height: 50, backgroundColor: '#ff5555'}}></View>
+
         </View>
       );
     }
