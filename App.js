@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
-import {View, Text, StyleSheet, TextInput, StatusBar } from 'react-native'
+import {View, Text, StyleSheet, TextInput, StatusBar, Button } from 'react-native'
 
 class App extends Component{
   constructor(props){
     super(props);
     this.state = {
-      nome: ''
+      nome: '',
+      input: ''
     };
 
-    this.pegaNome = this.pegaNome.bind(this);
+    this.entrar = this.entrar.bind(this);
   }
 
-  pegaNome(texto){
-    if(texto.length > 0){
-      this.setState({nome: 'Bem vindo: ' + texto});
-    }else{
-      this.setState({nome: ''})
+  entrar(){
+    if(this.state.input === ''){
+      alert('Digite seu nome!');
+      return;
     }
+
+    this.setState({nome: 'Bem vindo: ' + this.state.input})
   }
 
 render(){
@@ -31,8 +33,10 @@ render(){
           < TextInput style={styles.input} 
           placeholder="Digite seu nome:" 
           underlineColorAndroid="transparent"
-          onChangeText={this.pegaNome}
+          onChangeText={ (texto) => this.setState({input: texto}) }
            />
+
+           <Button title="Entrar" onPress={this.entrar} />
 
           <Text style={styles.texto}>{this.state.nome}</Text>
 
@@ -47,18 +51,23 @@ render(){
   const styles = StyleSheet.create({
     container:{
       flex:1,
+      backgroundColor: '#282a36',
+      color: '#f8f8f2'
     },
     input:{
+      backgroundColor: '#fff',
+      color: '#282a36',
       height: 45,
       borderWidth: 1,
-      borderColor: '#222',
-      margin: 10,
+      borderColor: '#7159c1',
+      margin: 100,
       fontSize: 20,
       padding: 10,
     },
     texto:{
+      color: '#50fa7b',
       textAlign: 'center',
-      fontSize: 25
+      fontSize: 30
     },
 
   });
