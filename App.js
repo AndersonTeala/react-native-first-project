@@ -1,26 +1,67 @@
 import React, { Component } from 'react';
-import {View, Text } from 'react-native'
+import {View, Text, StyleSheet, TextInput, StatusBar } from 'react-native'
 
 class App extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      nome: ''
+    };
+
+    this.pegaNome = this.pegaNome.bind(this);
+  }
+
+  pegaNome(texto){
+    if(texto.length > 0){
+      this.setState({nome: 'Bem vindo: ' + texto});
+    }else{
+      this.setState({nome: ''})
+    }
+  }
+
 render(){
     return(
-        <View style={{flex:1, 
-                      backgroundColor: '#282a36', 
-                      flexDirection: 'row', 
-                      alignItems: 'center', 
-                      justifyContent: 'center' 
-                      }}>
 
-            <View style={{width:50, height: 50, backgroundColor: '#f1fa8c'}}></View>
+      <>
 
-            <View style={{width:50, height: 50, backgroundColor: '#50fa7b'}}></View>
+      <StatusBar barStyle="light-content" backgroundColor="#7159c1" />
 
-            <View style={{width: 50, height: 50, backgroundColor: '#ff5555'}}></View>
+        <View style={styles.container}>
+
+          < TextInput style={styles.input} 
+          placeholder="Digite seu nome:" 
+          underlineColorAndroid="transparent"
+          onChangeText={this.pegaNome}
+           />
+
+          <Text style={styles.texto}>{this.state.nome}</Text>
 
         </View>
+      </>
+
       );
     }
   }
+
+
+  const styles = StyleSheet.create({
+    container:{
+      flex:1,
+    },
+    input:{
+      height: 45,
+      borderWidth: 1,
+      borderColor: '#222',
+      margin: 10,
+      fontSize: 20,
+      padding: 10,
+    },
+    texto:{
+      textAlign: 'center',
+      fontSize: 25
+    },
+
+  });
 
 
 export default App;
